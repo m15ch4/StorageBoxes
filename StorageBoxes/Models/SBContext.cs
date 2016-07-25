@@ -7,15 +7,19 @@ using System.Threading.Tasks;
 
 namespace StorageBoxes.Models
 {
-    class SBContext : DbContext
+    public class SBContext : DbContext
     {
-        public SBContext() : base()
+        public SBContext(string connectionString) : base(connectionString)
         {
 
         }
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Option> Options { get; set; }
+        public DbSet<OptionValue> OptionValues { get; set; }
+        public DbSet<ProductSKU> ProductSKUS { get; set; }
+        public DbSet<SKUValue> SKUValues { get; set; }
     }
 
 }

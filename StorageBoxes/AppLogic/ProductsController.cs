@@ -13,12 +13,28 @@ namespace StorageBoxes.AppLogic
         private SBContext _context;
         public ProductsController()
         {
-            _context = new SBContext();
+            _context = new SBContext("StorageBoxes.Properties.Settings.SBDBConnectionString");
         }
 
+        // GetCategories
         public BindableCollection<Category> GetCategories()
         {
             return new BindableCollection<Category>(_context.Categories);
         }
+
+        // GetProducts
+        public BindableCollection<Product> GetProducts(Category category = null)
+        {
+            if (category == null)
+            {
+                return new BindableCollection<Product>(_context.Products);
+            }
+            else
+            {
+                return new BindableCollection<Product>(_context.Products.Where(pr => pr.Category.CategoryID == category.CategoryID).ToList());
+            }
+        }
+
+
     }
 }

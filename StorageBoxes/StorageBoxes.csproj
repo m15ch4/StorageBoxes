@@ -87,9 +87,40 @@
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="AppLogic\ProductsController.cs" />
     <Compile Include="Interfaces\IShell.cs" />
+    <Compile Include="Migrations\201607251230225_Added Option table.cs" />
+    <Compile Include="Migrations\201607251230225_Added Option table.Designer.cs">
+      <DependentUpon>201607251230225_Added Option table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607251633237_Added Option table PK_2.cs" />
+    <Compile Include="Migrations\201607251633237_Added Option table PK_2.Designer.cs">
+      <DependentUpon>201607251633237_Added Option table PK_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607251705391_Added OptionValues table.cs" />
+    <Compile Include="Migrations\201607251705391_Added OptionValues table.Designer.cs">
+      <DependentUpon>201607251705391_Added OptionValues table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607251730119_Added OptionValues table v2.cs" />
+    <Compile Include="Migrations\201607251730119_Added OptionValues table v2.Designer.cs">
+      <DependentUpon>201607251730119_Added OptionValues table v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607251844094_Created all tables.cs" />
+    <Compile Include="Migrations\201607251844094_Created all tables.Designer.cs">
+      <DependentUpon>201607251844094_Created all tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\MigrationsContextFactory.cs" />
+    <Compile Include="Models\Option.cs" />
+    <Compile Include="Models\OptionValue.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductSKU.cs" />
     <Compile Include="Models\SBContext.cs" />
+    <Compile Include="Models\SKUValue.cs" />
+    <Compile Include="SBDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SBDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\ShellViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +137,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201607251230225_Added Option table.resx">
+      <DependentUpon>201607251230225_Added Option table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607251633237_Added Option table PK_2.resx">
+      <DependentUpon>201607251633237_Added Option table PK_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607251705391_Added OptionValues table.resx">
+      <DependentUpon>201607251705391_Added OptionValues table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607251730119_Added OptionValues table v2.resx">
+      <DependentUpon>201607251730119_Added OptionValues table v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607251844094_Created all tables.resx">
+      <DependentUpon>201607251844094_Created all tables.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -116,6 +162,17 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="SBDBDataSet.xsc">
+      <DependentUpon>SBDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SBDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SBDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SBDBDataSet.xss">
+      <DependentUpon>SBDBDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
