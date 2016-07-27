@@ -6,6 +6,17 @@
     <Grid Background="White">
         <ComboBox x:Name="Categories" DisplayMemberPath="CategoryName" SelectedItem="{Binding CategoriesSelectedItem}" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="300" Height="30" FontSize="20"/>
         <ListBox x:Name="Products" DisplayMemberPath="ProductName" SelectedItem="{Binding ProductsSelectedItem}" Margin="10,154,0,9.6" HorizontalAlignment="Left" Width="300" FontSize="20"/>
+        <ListBox x:Name="ProductSKUs" HorizontalAlignment="Left" Height="127" Margin="315,154,0,0" VerticalAlignment="Top" Width="182">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding SKUValues}"/>
+                        <Label Content="{Binding Price}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="OpenDialog" Content="Dialog" HorizontalAlignment="Left" Margin="677,476,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 

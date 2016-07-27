@@ -14,18 +14,21 @@ namespace StorageBoxes.Models
         {
 
         }
-        [Key]
+
+        [Key, ForeignKey("Product")]
         [Column(Order = 1)]
+        [Index("IX_Options", 2, IsUnique = true)]
+        public int ProductID { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
         public int OptionID { get; set; }
 
         [Index("IX_Options", 1, IsUnique = true)]
         [MaxLength(200)]
         public string OptionName { get; set; }
 
-        [Key, ForeignKey("Product")]
-        [Column(Order = 2)]
-        [Index("IX_Options", 2, IsUnique = true)]
-        public int ProductID { get; set; }
+        
 
         public Product Product { get; set; }
         public ICollection<OptionValue> OptionValues { get; set; }

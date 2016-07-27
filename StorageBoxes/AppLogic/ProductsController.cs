@@ -2,6 +2,7 @@
 using StorageBoxes.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace StorageBoxes.AppLogic
         {
             if (category == null)
             {
-                return new BindableCollection<Product>(_context.Products);
+                return new BindableCollection<Product>(_context.Products.Include("Options.OptionValues"));
             }
             else
             {
@@ -35,6 +36,22 @@ namespace StorageBoxes.AppLogic
             }
         }
 
+        // Get Product Skus
+        public BindableCollection<ProductSKU> GetProductSKUs(Product product = null)
+        {
+            if (product == null)
+            {
+                return new BindableCollection<ProductSKU>(_context.ProductSKUS.Include("SKUValues.OptionValue").Include("SKUValues.Option"));
+            }
+            else
+            {
+                return new BindableCollection<ProductSKU>(_context.ProductSKUS.Where(sku => sku.Product.ProductID == product.ProductID).Include("SKUValues.OptionValue").Include("SKUValues.Option").ToList());
+            }
+        }
 
+        public BindableCollection<OptionValue> GetOptionValues(Option option)
+        {
+            return new BindableCollection<OptionValue>(_context.OptionValues.Where(op => op.OptionID == option.OptionID).ToList());
+        }
     }
 }

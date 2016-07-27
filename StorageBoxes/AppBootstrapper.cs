@@ -2,6 +2,10 @@ namespace StorageBoxes {
     using System;
     using System.Collections.Generic;
     using Caliburn.Micro;
+    using ViewModels;
+    using Interfaces;
+    using Contracts;
+    using Implementations;
 
     public class AppBootstrapper : BootstrapperBase {
         SimpleContainer container;
@@ -16,6 +20,10 @@ namespace StorageBoxes {
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();
             container.PerRequest<IShell, ShellViewModel>();
+            container.PerRequest<IDialog, DialogViewModel>();
+
+            container.PerRequest<IProductService, ProductService>();
+            container.PerRequest<IOptionService, OptionService>();
         }
 
         protected override object GetInstance(Type service, string key) {

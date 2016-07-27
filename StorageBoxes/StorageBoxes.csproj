@@ -86,6 +86,11 @@
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="AppLogic\ProductsController.cs" />
+    <Compile Include="Contracts\IOptionService.cs" />
+    <Compile Include="Contracts\IProductService.cs" />
+    <Compile Include="Implementations\OptionService.cs" />
+    <Compile Include="Implementations\ProductService.cs" />
+    <Compile Include="Interfaces\IDialog.cs" />
     <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="Migrations\201607251230225_Added Option table.cs" />
     <Compile Include="Migrations\201607251230225_Added Option table.Designer.cs">
@@ -107,6 +112,10 @@
     <Compile Include="Migrations\201607251844094_Created all tables.Designer.cs">
       <DependentUpon>201607251844094_Created all tables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607252039020_Created all tables v2.cs" />
+    <Compile Include="Migrations\201607252039020_Created all tables v2.Designer.cs">
+      <DependentUpon>201607252039020_Created all tables v2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\MigrationsContextFactory.cs" />
@@ -121,7 +130,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SBDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\DialogViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\DialogView.xaml.cs">
+      <DependentUpon>DialogView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -152,6 +165,9 @@
     <EmbeddedResource Include="Migrations\201607251844094_Created all tables.resx">
       <DependentUpon>201607251844094_Created all tables.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607252039020_Created all tables v2.resx">
+      <DependentUpon>201607252039020_Created all tables v2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -179,6 +195,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="Views\DialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
