@@ -9,17 +9,18 @@ using StorageBoxes.Models;
 
 namespace StorageBoxes.Implementations
 {
-    class OptionService : IOptionService
+    class CategoryService : ICategoryService
     {
         private SBContext _context;
 
-        public OptionService()
+        public CategoryService()
         {
             _context = new SBContext("StorageBoxes.Properties.Settings.SBDBConnectionString");
         }
-        public BindableCollection<Option> GetAllForProduct(Product product)
+
+        public BindableCollection<Category> GetAll()
         {
-            return new BindableCollection<Option>(_context.Options.Where(o => o.ProductID == product.ProductID).ToList());
+            return new BindableCollection<Category>(_context.Categories);
         }
     }
 }

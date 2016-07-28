@@ -51,7 +51,9 @@ namespace StorageBoxes.AppLogic
 
         public BindableCollection<OptionValue> GetOptionValues(Option option)
         {
-            return new BindableCollection<OptionValue>(_context.OptionValues.Where(op => op.OptionID == option.OptionID).ToList());
+            //return new BindableCollection<OptionValue>(_context.OptionValues.Where(op => op.OptionID == option.OptionID).ToList());
+            var ls = _context.OptionValues;
+            return new BindableCollection<OptionValue>(_context.OptionValues);
         }
     }
 }

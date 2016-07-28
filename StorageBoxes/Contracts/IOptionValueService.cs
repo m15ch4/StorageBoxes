@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace StorageBoxes.Contracts
 {
-    public interface IOptionService
+    public interface IOptionValueService
     {
-        BindableCollection<Option> GetAllForProduct(Product product);
+        BindableCollection<OptionValue> GetAllForOption(Option option);
     }
 }

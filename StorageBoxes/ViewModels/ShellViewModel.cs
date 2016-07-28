@@ -16,19 +16,27 @@ namespace StorageBoxes {
         private BindableCollection<Product> _products;
         private BindableCollection<ProductSKU> _productSKUs;
 
+        private readonly ICategoryService _categoryService;
         private readonly IProductService _productService;
         private readonly IOptionService _optionService;
+        private readonly IOptionValueService _optionValueService;
+        private readonly IProductSKUService _productSKUService;
+        private readonly ISKUValueService _skuValueService;
 
-        public ShellViewModel(IProductService productService, IOptionService optionService)
+        public ShellViewModel(ICategoryService categoryService, IProductService productService, IOptionService optionService, IOptionValueService optionValueService, IProductSKUService productSKUService, ISKUValueService skuValueService)
         {
+            _categoryService = categoryService;
             _productService = productService;
             _optionService = optionService;
+            _optionValueService = optionValueService;
+            _productSKUService = productSKUService;
+            _skuValueService = skuValueService;
 
             _products = _productService.GetAll();
 
             _productsController = new ProductsController();
-            _productCategories = _productsController.GetCategories();
-            _productSKUs = _productsController.GetProductSKUs();
+            _productCategories = _categoryService.GetAll();
+            _productSKUs = _productSKUService.GetAll();
             CategoriesSelectedItem = _productCategories[0];
         }
 
@@ -85,8 +93,7 @@ namespace StorageBoxes {
             {
                 _productsSelectedItem = value;
                 //Trace.WriteLine(_productsSelectedItem.ToString());
-                ProductSKUs = _productsController.GetProductSKUs(_productsSelectedItem);
-
+                //ProductSKUs = _productsController.GetProductSKUs(_productsSelectedItem);
                 //foreach (Option o in _productsSelectedItem.Options)
                 //{
                 //    foreach (OptionValue ov in o.OptionValues)
@@ -94,46 +101,49 @@ namespace StorageBoxes {
                 //        Trace.WriteLine(ov.ValueName);
                 //    }
                 //}
-                Trace.WriteLine(_productsSelectedItem.Options);
+                //Trace.WriteLine(_productsSelectedItem.Options);
 
                 NotifyOfPropertyChange(() => ProductsSelectedItem);
             }
         }
 
-        //===================================================
-        // SKU List
-        //===================================================
-        public BindableCollection<ProductSKU> ProductSKUs
-        {
-            get { return _productSKUs; }
-            set
-            {
-                _productSKUs = value;
-                NotifyOfPropertyChange(() => ProductSKUs);
-            }
-        }
 
         public void OpenDialog()
         {
+            // Prepare collection to store OptionValues for selected Product
             BindableCollection<OptionValue> selectedOptionValues = new BindableCollection<OptionValue>();
+
+            // Set OptionValue selection window style
             dynamic mysettings = new ExpandoObject();
             mysettings.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             mysettings.ResizeMode = ResizeMode.NoResize;
             mysettings.WindowStyle = WindowStyle.None;
             mysettings.ShowInTaskbar = false;
 
+            // Set optionvalue for each option of selected product (only if particular product is selected)
             if (_productsSelectedItem != null)
             {
-                IWindowManager wm = new WindowManager();
-                foreach (Option o in _optionService.GetAllByProduct(_productsSelectedItem))
+                IWindowManager windowManager = new WindowManager();
+
+                // For each option available to selected product
+                foreach (Option o in _optionService.GetAllForProduct(_productsSelectedItem))
                 {
-                    var availableOptionValues = _productsController.GetOptionValues(o);
-                    wm.ShowDialog(new DialogViewModel(availableOptionValues, selectedOptionValues),null,mysettings);
+                    // get available optionvalues
+                    var availableOptionValues = _optionValueService.GetAllForOption(o);
+
+                    //show dialog to select one optionvalue
+                    windowManager.ShowDialog(new DialogViewModel(availableOptionValues, selectedOptionValues),null,mysettings);
                 }
-                foreach (var i in selectedOptionValues)
+
+                var psv = _skuValueService.GetAllForProduct(_productsSelectedItem);
+                var skuid = _skuValueService.FindSKUID(psv, selectedOptionValues);
+                if (skuid > 0)
                 {
-                    Trace.WriteLine(i.ValueName);
+                    ProductSKU productSKU = _productSKUService.GetByID(skuid);
+                    Trace.WriteLine(productSKU.Sku);
                 }
+
+
             }
         }
     }

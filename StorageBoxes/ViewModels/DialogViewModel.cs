@@ -12,14 +12,22 @@ namespace StorageBoxes.ViewModels
 {
     class DialogViewModel : Screen, IDialog
     {
+        // OptionValues ComboBox items
         private BindableCollection<OptionValue> _optionValues;
+        // Reference to choosen optionvalues
         private BindableCollection<OptionValue> _selectedOptionValues;
         public DialogViewModel(BindableCollection<OptionValue> optionValues, BindableCollection<OptionValue> selectedOptionValues)
         {
+            // ComboBox Items Initialization
             _optionValues = optionValues;
+
+            // Container for choosen option_values for each option
             _selectedOptionValues = selectedOptionValues;
         }
 
+        //====================================
+        // ComboBox items setter / getter
+        //====================================
         public BindableCollection<OptionValue> OptionValues
         {
             get { return _optionValues; }
@@ -30,7 +38,9 @@ namespace StorageBoxes.ViewModels
             }
         }
 
-
+        //====================================
+        // SelectedItem setter / getter
+        //====================================
         private OptionValue _optionValuesSelectedItem;
         public OptionValue OptionValuesSelectedItem
         {
@@ -38,18 +48,23 @@ namespace StorageBoxes.ViewModels
             set
             {
                 _optionValuesSelectedItem = value;
-                Trace.WriteLine("v");
                 NotifyOfPropertyChange(() => OptionValuesSelectedItem);
                 NotifyOfPropertyChange(() => CanConfirm);
             }
         }
 
+        //====================================
+        // On Confirm button pressed callback
+        //====================================
         public void Confirm()
         {
             _selectedOptionValues.Add(_optionValuesSelectedItem);
             TryClose(true);
         }
 
+        //====================================
+        // Confirm button enable / disable
+        //====================================
         public bool CanConfirm
         {
             get { return _optionValuesSelectedItem != null; }

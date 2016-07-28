@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace StorageBoxes.Contracts
 {
-    public interface IOptionService
+    public interface IProductSKUService
     {
-        BindableCollection<Option> GetAllForProduct(Product product);
+        BindableCollection<ProductSKU> GetAll();
+
+        BindableCollection<ProductSKU> GetAllForProduct(Product product);
+
+        ProductSKU GetByID(int id);
     }
 }

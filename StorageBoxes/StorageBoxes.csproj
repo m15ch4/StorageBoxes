@@ -86,10 +86,18 @@
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="AppLogic\ProductsController.cs" />
+    <Compile Include="Contracts\ICategoryService.cs" />
     <Compile Include="Contracts\IOptionService.cs" />
+    <Compile Include="Contracts\IOptionValueService.cs" />
     <Compile Include="Contracts\IProductService.cs" />
+    <Compile Include="Contracts\IProductSKUService.cs" />
+    <Compile Include="Contracts\ISKUValueService.cs" />
+    <Compile Include="Implementations\CategoryService.cs" />
     <Compile Include="Implementations\OptionService.cs" />
+    <Compile Include="Implementations\OptionValueService.cs" />
     <Compile Include="Implementations\ProductService.cs" />
+    <Compile Include="Implementations\ProductSKUService.cs" />
+    <Compile Include="Implementations\SKUValueService.cs" />
     <Compile Include="Interfaces\IDialog.cs" />
     <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="Migrations\201607251230225_Added Option table.cs" />

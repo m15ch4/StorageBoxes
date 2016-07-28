@@ -24,6 +24,10 @@ namespace StorageBoxes {
 
             container.PerRequest<IProductService, ProductService>();
             container.PerRequest<IOptionService, OptionService>();
+            container.PerRequest<IOptionValueService, OptionValueService>();
+            container.PerRequest<ICategoryService, CategoryService>();
+            container.PerRequest<IProductSKUService, ProductSKUService>();
+            container.PerRequest<ISKUValueService, SKUValueService>();
         }
 
         protected override object GetInstance(Type service, string key) {
