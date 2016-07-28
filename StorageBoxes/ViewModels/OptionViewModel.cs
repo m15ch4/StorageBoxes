@@ -10,14 +10,16 @@ using System.Threading.Tasks;
 
 namespace StorageBoxes.ViewModels
 {
-    class DialogViewModel : Screen, IDialog
+    class OptionViewModel : Screen, IOption
     {
         // OptionValues ComboBox items
         private BindableCollection<OptionValue> _optionValues;
         // Reference to choosen optionvalues
         private BindableCollection<OptionValue> _selectedOptionValues;
-        public DialogViewModel(BindableCollection<OptionValue> optionValues, BindableCollection<OptionValue> selectedOptionValues)
+        public OptionViewModel(Option option, BindableCollection<OptionValue> optionValues, BindableCollection<OptionValue> selectedOptionValues)
         {
+            _optionLabel = option.OptionName.ToString();
+
             // ComboBox Items Initialization
             _optionValues = optionValues;
 
@@ -53,6 +55,16 @@ namespace StorageBoxes.ViewModels
             }
         }
 
+        private string _optionLabel;
+        public string OptionLabel
+        {
+            get { return _optionLabel; }
+            set
+            {
+                _optionLabel = value;
+                NotifyOfPropertyChange(() => OptionLabel);
+            }
+        }
         //====================================
         // On Confirm button pressed callback
         //====================================

@@ -132,7 +132,7 @@ namespace StorageBoxes {
                     var availableOptionValues = _optionValueService.GetAllForOption(o);
 
                     //show dialog to select one optionvalue
-                    windowManager.ShowDialog(new DialogViewModel(availableOptionValues, selectedOptionValues),null,mysettings);
+                    windowManager.ShowDialog(new OptionViewModel(o, availableOptionValues, selectedOptionValues),null,mysettings);
                 }
 
                 var psv = _skuValueService.GetAllForProduct(_productsSelectedItem);
@@ -143,7 +143,7 @@ namespace StorageBoxes {
                     Trace.WriteLine(productSKU.Sku);
                 }
 
-
+                Trace.WriteLine(Properties.Settings.Default.SBDBConnectionString);
             }
         }
     }

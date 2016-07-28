@@ -98,7 +98,7 @@
     <Compile Include="Implementations\ProductService.cs" />
     <Compile Include="Implementations\ProductSKUService.cs" />
     <Compile Include="Implementations\SKUValueService.cs" />
-    <Compile Include="Interfaces\IDialog.cs" />
+    <Compile Include="Interfaces\IOption.cs" />
     <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="Migrations\201607251230225_Added Option table.cs" />
     <Compile Include="Migrations\201607251230225_Added Option table.Designer.cs">
@@ -138,10 +138,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SBDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\DialogViewModel.cs" />
+    <Compile Include="ViewModels\OptionViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Views\DialogView.xaml.cs">
-      <DependentUpon>DialogView.xaml</DependentUpon>
+    <Compile Include="Views\OptionView.xaml.cs">
+      <DependentUpon>OptionView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -203,7 +203,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\DialogView.xaml">
+    <Page Include="Views\OptionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

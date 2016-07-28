@@ -20,7 +20,7 @@ namespace StorageBoxes {
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();
             container.PerRequest<IShell, ShellViewModel>();
-            container.PerRequest<IDialog, DialogViewModel>();
+            container.PerRequest<IOption, OptionViewModel>();
 
             container.PerRequest<IProductService, ProductService>();
             container.PerRequest<IOptionService, OptionService>();

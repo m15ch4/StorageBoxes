@@ -1,6 +1,6 @@
 ﻿namespace StorageBoxes.Interfaces
 {
-    public interface IDialog
+    public interface IOption
     {
     }
 }

@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-V2912UT\SQLEXPRESS;Initial Catalog=SBDB;User ID=SBUser;Password=P@ssw0rd</Value>
     </Setting>
+    <Setting Name="SerialPort_Name" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">COM1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

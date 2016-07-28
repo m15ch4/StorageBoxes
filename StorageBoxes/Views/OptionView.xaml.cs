@@ -17,9 +17,9 @@ namespace StorageBoxes.Views
     /// <summary>
     /// Interaction logic for DialogView.xaml
     /// </summary>
-    public partial class DialogView : Window
+    public partial class OptionView : Window
     {
-        public DialogView()
+        public OptionView()
         {
             InitializeComponent();
         }

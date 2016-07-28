@@ -33,5 +33,14 @@ namespace StorageBoxes.Properties {
                 return ((string)(this["SBDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM1")]
+        public string SerialPort_Name {
+            get {
+                return ((string)(this["SerialPort_Name"]));
+            }
+        }
     }
 }
