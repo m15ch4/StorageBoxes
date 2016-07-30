@@ -20,7 +20,7 @@ namespace StorageBoxes.Implementations
 
         public BindableCollection<OptionValue> GetAllForOption(Option option)
         {
-            return new BindableCollection<OptionValue>(_context.OptionValues.Where(ov => ov.OptionID == option.OptionID).ToList());
+            return new BindableCollection<OptionValue>(_context.OptionValues.Where(ov => ov.OptionID == option.OptionID && ov.ProductID == option.ProductID).ToList());
         }
     }
 }

@@ -30,7 +30,7 @@ namespace StorageBoxes.Implementations
 
         public ProductSKU GetByID(int id)
         {
-            return _context.ProductSKUS.FirstOrDefault(ps => ps.ProductSKUID == id);
+            return _context.ProductSKUS.Include("Product").FirstOrDefault(ps => ps.ProductSKUID == id);
         }
     }
 }

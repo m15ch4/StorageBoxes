@@ -5,7 +5,7 @@ namespace StorageBoxes.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Models.SBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<StorageBoxes.Models.SBContext>
     {
         public Configuration()
         {

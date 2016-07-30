@@ -27,25 +27,34 @@ namespace StorageBoxes.Implementations
             //return input.Where(sv => (sv.OptionValueID == optionValue.OptionValueID && sv.OptionID == optionValue.OptionID) || sv.OptionID != optionValue.OptionID);
         }
 
-        public int FindSKUID(IQueryable<SKUValue> productSKUValues, BindableCollection<OptionValue> optionValues)
+        public int FindSKUID(IQueryable<SKUValue> productSKUValues, BindableCollection<OptionValue> selectedOptionValues)
         {
             IEnumerable<int> skuIDList = productSKUValues.Select(sv => sv.ProductSKUID).ToList();
-            foreach (OptionValue ov in optionValues)
+            //foreach (int skuid in skuIDList)
+            //{
+            //    Trace.WriteLine(skuid);
+            //}
+            //Trace.WriteLine("xxxxxxxxxxxx");
+            foreach (OptionValue ov in selectedOptionValues)
             {
-                IQueryable<SKUValue> optionSKUValues = productSKUValues.Where(sv => sv.OptionValueID == ov.OptionValueID);
+                IQueryable<SKUValue> optionSKUValues = productSKUValues.Where(sv => sv.OptionValueID == ov.OptionValueID && sv.OptionID == ov.OptionID);
                 var temp = skuIDList.Intersect(optionSKUValues.Select(sv => sv.ProductSKUID).ToList());
                 skuIDList = temp;
-                foreach (int sid in temp)
-                {
-                    Trace.WriteLine("->" + sid);
-                }
-                Trace.WriteLine("--------------");
+                //foreach (int sid in temp)
+                //{
+                //    Trace.WriteLine("->" + sid);
+                //}
+                //Trace.WriteLine("--------------");
             }
             if (skuIDList.Count() == 1)
             {
                 return skuIDList.First();
             }
-            else return -1;
+            else
+            {
+                Trace.WriteLine("W bazie nie znaleziono wpisu lub znaleziono więcej niż jeden wpis dotyczący SKU [FindSKUID] /-1/");
+                return -1;
+            }
         }
 
         public IQueryable<SKUValue> GetAllForProduct(Product product)

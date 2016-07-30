@@ -28,5 +28,10 @@ namespace StorageBoxes.Implementations
         {
             return new BindableCollection<Product>(_context.Products.Where(c => c.Category.CategoryID == category.CategoryID).ToList());
         }
+
+        public Product GetBySKU(ProductSKU sku)
+        {
+            return sku.Product;
+        }
     }
 }

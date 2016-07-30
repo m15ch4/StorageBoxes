@@ -30,5 +30,6 @@ namespace StorageBoxes.Models
 
         public Product Product { get; set; }
         public ICollection<SKUValue> SKUValues { get; set; }
+        public ICollection<Box> Boxes { get; set; }
     }
 }

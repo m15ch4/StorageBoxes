@@ -13,5 +13,7 @@ namespace StorageBoxes.Contracts
         BindableCollection<Product> GetAll();
 
         BindableCollection<Product> GetAllByCategory(Category category);
+
+        Product GetBySKU(ProductSKU sku);
     }
 }
